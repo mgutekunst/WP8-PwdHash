@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>f47e2782-db4b-49a3-bac4-3c838ab149b4</ProjectGuid>
+    <ProjectGuid>{16864472-CAB2-4AA2-A9EA-5C72B60E407B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>PwdHash.Portable.Tests</RootNamespace>
