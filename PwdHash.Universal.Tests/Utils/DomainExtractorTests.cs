@@ -1,7 +1,7 @@
 using Microsoft.VisualStudio.TestPlatform.UnitTestFramework;
-using PwdHash.WinStore.WinStore.Utils;
+using PwdHash.Utils;
 
-namespace PwdHash.Portable.Tests.Utils
+namespace PwdHash.Universal.Tests.Utils
 {
     [TestClass]
     public class DomainExtractorTests

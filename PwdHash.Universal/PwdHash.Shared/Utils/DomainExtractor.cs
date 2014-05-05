@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 
-namespace PwdHash.WinStore.WinStore.Utils
+namespace PwdHash.Utils
 {
     public static class DomainExtractor
     {
