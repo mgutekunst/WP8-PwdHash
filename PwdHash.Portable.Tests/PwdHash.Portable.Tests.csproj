@@ -53,12 +53,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utils\DomainExtractorTests.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\PwdHash.Portable\PwdHash.Portable.csproj">
-      <Project>{b3f9c025-2d3d-4ae7-8713-98c1f6db010c}</Project>
-      <Name>PwdHash.Portable</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>
