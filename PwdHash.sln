@@ -5,21 +5,21 @@ VisualStudioVersion = 12.0.30408.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PwdHash.Portable.Tests", "PwdHash.Portable.Tests\PwdHash.Portable.Tests.csproj", "{348787C2-5494-45DF-887C-1824AE42225A}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PwdHash.WinStore", "PwdHash.WinStore", "{930FE52D-1F98-4130-B3EF-6748C49C3F41}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PwdHash.Universal", "PwdHash.Universal", "{930FE52D-1F98-4130-B3EF-6748C49C3F41}"
 EndProject
-Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "PwdHash.WinStore.Shared", "PwdHash.WinStore\PwdHash.WinStore.Shared\PwdHash.WinStore.Shared.shproj", "{EAFE5E33-951B-4117-A96A-8D0BD3B7ABB9}"
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "PwdHash.WinStore.Shared", "PwdHash.Universal\PwdHash.Shared\PwdHash.WinStore.Shared.shproj", "{EAFE5E33-951B-4117-A96A-8D0BD3B7ABB9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PwdHash.WinStore.Windows", "PwdHash.WinStore\PwdHash.WinStore.Windows\PwdHash.WinStore.Windows.csproj", "{5ADE617F-DAB1-4393-951B-155AF5EBD9A2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PwdHash.Windows", "PwdHash.Universal\PwdHash.Windows\PwdHash.Windows.csproj", "{5ADE617F-DAB1-4393-951B-155AF5EBD9A2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PwdHash.WinStore.WindowsPhone", "PwdHash.WinStore\PwdHash.WinStore.WindowsPhone\PwdHash.WinStore.WindowsPhone.csproj", "{F179D08D-6D2F-4E84-9FB1-6320EC4EC715}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PwdHash.WindowsPhone", "PwdHash.Universal\PwdHash.WindowsPhone\PwdHash.WindowsPhone.csproj", "{F179D08D-6D2F-4E84-9FB1-6320EC4EC715}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PwdHash.Portable", "PwdHash.Portable\PwdHash.Portable.csproj", "{B3F9C025-2D3D-4AE7-8713-98C1F6DB010C}"
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
-		PwdHash.WinStore\PwdHash.WinStore.Shared\PwdHash.WinStore.Shared.projitems*{5ade617f-dab1-4393-951b-155af5ebd9a2}*SharedItemsImports = 4
-		PwdHash.WinStore\PwdHash.WinStore.Shared\PwdHash.WinStore.Shared.projitems*{eafe5e33-951b-4117-a96a-8d0bd3b7abb9}*SharedItemsImports = 13
-		PwdHash.WinStore\PwdHash.WinStore.Shared\PwdHash.WinStore.Shared.projitems*{f179d08d-6d2f-4e84-9fb1-6320ec4ec715}*SharedItemsImports = 4
+		PwdHash.Universal\PwdHash.Shared\PwdHash.Shared.projitems*{5ade617f-dab1-4393-951b-155af5ebd9a2}*SharedItemsImports = 4
+		PwdHash.Universal\PwdHash.Shared\PwdHash.WinStore.Shared.projitems*{eafe5e33-951b-4117-a96a-8d0bd3b7abb9}*SharedItemsImports = 13
+		PwdHash.Universal\PwdHash.Shared\PwdHash.Shared.projitems*{f179d08d-6d2f-4e84-9fb1-6320ec4ec715}*SharedItemsImports = 4
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
