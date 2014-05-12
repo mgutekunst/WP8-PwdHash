@@ -1,2 +1,8 @@
 * Readme
 ** Windows Phone 8 implementation of [[https://www.pwdhash.com/][PwdHash]]
+   This is an implementation of PwdHash. It's build as a Universal Application, so it requires Windows Phone 8.1 and Windows 8.1. 
+
+   Currently there's no UI, neither for Windows Phone nor the Store App, but at least all tests pass now :)
+
+** Thanks
+   I borrowed a lot of the Implementation of HashPassword from Philipp Wolfer and his [[https://play.google.com/store/apps/details?id=com.uploadedlobster.PwdHash][PwdHash For Android]]. Thank you very much for publishing your work at [[https://github.com/phw/Android-PwdHash][GitHub]]. 
