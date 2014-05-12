@@ -16,5 +16,6 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Utils\DomainExtractor.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utils\HashPassword.cs" />
   </ItemGroup>
 </Project>
