@@ -2,6 +2,17 @@
     x:Class="PwdHash.WinStore.App"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:PwdHash.WinStore">
+    xmlns:common="using:PwdHash.WinStore.Common"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    xmlns:viewModel="using:PwdHash.ViewModel">
+    
+    <Application.Resources>
+        
+        <common:ResWrapper x:Key="ResWrapper"/>
+        <viewModel:ViewModelLocator x:Key="Locator" d:IsDataSource="true"/>
+
+    </Application.Resources>
 
 </Application>
