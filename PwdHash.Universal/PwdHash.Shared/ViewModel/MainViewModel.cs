@@ -100,7 +100,9 @@ namespace PwdHash.WinStore.ViewModel
             if (string.IsNullOrEmpty(Url) || string.IsNullOrEmpty(Password))
                 return;
 
-            var h = HashPassword.create(Password, Url);
+            var url = DomainExtractor.Extract(Url);
+
+            var h = HashPassword.create(Password, url);
             Hash = h;
 
             addToRecentHashes(new Hash{ Password = Password, Url = Url });
