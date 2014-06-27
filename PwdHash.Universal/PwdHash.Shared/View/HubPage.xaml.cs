@@ -77,5 +77,13 @@ namespace PwdHash.WinStore.View
             isMovedUp = false;
 #endif
         }
+
+        private void ResultBox_OnTextChanged(object sender, TextChangedEventArgs e)
+        {
+            var tBox = sender as TextBox;
+
+            tBox.Focus(FocusState.Programmatic);
+            tBox.SelectAll();
+        }
     }
 }
