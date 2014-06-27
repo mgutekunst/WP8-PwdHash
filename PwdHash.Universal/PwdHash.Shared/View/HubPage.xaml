@@ -1,4 +1,4 @@
-﻿<Page
+﻿<Page x:Name="page"
     x:Class="PwdHash.WinStore.View.HubPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -6,13 +6,53 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    DataContext="{Binding Source={StaticResource Locator}, Path=MainVielModel}">
+    DataContext="{Binding Source={StaticResource Locator}, Path=MainVielModel}" RenderTransformOrigin="0.5,0.5">
+
+    <Page.Resources>
+        <x:Double x:Key="HubWidth">300</x:Double>
+
+        <DataTemplate x:Key="HashListViewTemplate">
+            <TextBlock Text="{Binding Url}"/>
+        </DataTemplate>
+        <Storyboard x:Name="MovePageDown">
+        	<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(Control.FontFamily)" Storyboard.TargetName="page">
+        		<DiscreteObjectKeyFrame KeyTime="0:0:0.2">
+        			<DiscreteObjectKeyFrame.Value>
+        				<FontFamily>Global User Interface</FontFamily>
+        			</DiscreteObjectKeyFrame.Value>
+        		</DiscreteObjectKeyFrame>
+        	</ObjectAnimationUsingKeyFrames>
+        	<DoubleAnimation Duration="0:0:0.2" To="0" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="page" d:IsOptimized="True"/>
+        </Storyboard>
+        <Storyboard x:Name="MovePageUp">
+        	<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(Control.FontFamily)" Storyboard.TargetName="page">
+        		<DiscreteObjectKeyFrame KeyTime="0:0:0.2">
+        			<DiscreteObjectKeyFrame.Value>
+        				<FontFamily>Global User Interface</FontFamily>
+        			</DiscreteObjectKeyFrame.Value>
+        		</DiscreteObjectKeyFrame>
+        	</ObjectAnimationUsingKeyFrames>
+        	<DoubleAnimation Duration="0:0:0.2" To="-50" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="page" d:IsOptimized="True"/>
+        </Storyboard>
+    </Page.Resources>
+	<Page.Projection>
+		<PlaneProjection/>
+	</Page.Projection>
+	<Page.RenderTransform>
+		<CompositeTransform/>
+	</Page.RenderTransform>
+
+    <Page.BottomAppBar>
+        <CommandBar IsOpen="True" IsSticky="True">
+                <AppBarButton Icon="Favorite" Label="{Binding Source={StaticResource ResWrapper}, Path=Strings[MainPageAppBarLabelFavorite]}" Command="{Binding AddToFavoritesCommand}"/>
+        </CommandBar>
+    </Page.BottomAppBar>
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Hub Header="{Binding Source={StaticResource ResWrapper}, Path=Strings[ApplicationTitle]}">
-            <HubSection Header="{Binding Source={StaticResource ResWrapper}, Path=Strings[MainPageLabelHash]}">
+            <HubSection Header="{Binding Source={StaticResource ResWrapper}, Path=Strings[MainPageLabelHash]}" Width="{StaticResource HubWidth}">
                 <HubSection.ContentTemplate>
-                    <DataTemplate>
+                    <DataTemplate x:Name="TextTemplate">
                         <Grid MinWidth="150">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="Auto"/>
@@ -21,16 +61,24 @@
                                 <RowDefinition Height="Auto"/>
                                 <RowDefinition Height="*"/>
                             </Grid.RowDefinitions>
-                            <TextBox Header="{Binding Source={StaticResource ResWrapper}, Path=Strings[MainPageLabelUrl]}" Text="{Binding Url}"/>
-                            <PasswordBox Header="{Binding Source={StaticResource ResWrapper}, Path=Strings[MainPageLabelPassword]}" Password="{Binding Password}" Grid.Row="1" Margin="0,12"/>
+                            <TextBox Header="{Binding Source={StaticResource ResWrapper}, Path=Strings[MainPageLabelUrl]}" Text="{Binding Url, Mode=TwoWay}" KeyDown="TextBox_OnKeyDown"/>
+                            <PasswordBox Header="{Binding Source={StaticResource ResWrapper}, Path=Strings[MainPageLabelPassword]}" Password="{Binding Password, Mode=TwoWay}" Grid.Row="1" Margin="0,12" KeyDown="PasswordBox_OnKeyDown" Loaded="PasswordBox_OnLoaded" LostFocus="PasswordBox_LostFocus"/>
                             <Button Grid.Row="2" Content="{Binding Source={StaticResource ResWrapper}, Path=Strings[MainPageButtonLabelHashMe]}" Command="{Binding HashCommand}" HorizontalAlignment="Center"/>
                             <TextBlock Text="{Binding Hash}" Grid.Row="3" Margin="0,12,0,0" FontSize="20" HorizontalAlignment="Center"/>
                         </Grid>
                     </DataTemplate>
                 </HubSection.ContentTemplate>
             </HubSection>
-            <HubSection Header="{Binding Source={StaticResource ResWrapper}, Path=Strings[MainPageLabelRecent]}"/>
-            <HubSection Header="{Binding Source={StaticResource ResWrapper}, Path=Strings[MainPageLabelFavorites]}"/>
+            <HubSection Header="{Binding Source={StaticResource ResWrapper}, Path=Strings[MainPageLabelRecent]}">
+                <DataTemplate>
+                    <ListView ItemsSource="{Binding RecentHashes}" ItemTemplate="{StaticResource HashListViewTemplate}"/>
+                </DataTemplate>
+            </HubSection>
+            <HubSection Header="{Binding Source={StaticResource ResWrapper}, Path=Strings[MainPageLabelFavorites]}" Width="{StaticResource HubWidth}">
+                <DataTemplate>
+                    <ListView ItemsSource="{Binding Favorites}" ItemTemplate="{StaticResource HashListViewTemplate}"/>
+                </DataTemplate>
+            </HubSection>
         </Hub>
 
     </Grid>

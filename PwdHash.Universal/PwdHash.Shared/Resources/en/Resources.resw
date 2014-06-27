@@ -120,6 +120,9 @@
   <data name="ApplicationTitle" xml:space="preserve">
     <value>Password Hash</value>
   </data>
+  <data name="MainPageAppBarLabelFavorite" xml:space="preserve">
+    <value>zu Favoriten hinzufügen</value>
+  </data>
   <data name="MainPageButtonLabelHashMe" xml:space="preserve">
     <value>Hash Me</value>
   </data>
