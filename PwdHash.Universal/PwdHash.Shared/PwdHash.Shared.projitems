@@ -16,7 +16,10 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Common\ResWrapper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Common\Statics.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Interfaces\IStorageService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Model\Hash.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\StorageService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Utils\DomainExtractor.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Utils\HashPassword.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModel\MainViewModel.cs" />

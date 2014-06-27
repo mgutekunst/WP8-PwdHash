@@ -14,6 +14,8 @@
 
 using GalaSoft.MvvmLight.Ioc;
 using Microsoft.Practices.ServiceLocation;
+using PwdHash.Interfaces;
+using PwdHash.Services;
 using PwdHash.WinStore.ViewModel;
 
 namespace PwdHash.ViewModel
@@ -41,6 +43,8 @@ namespace PwdHash.ViewModel
             ////    // Create run time view services and models
             ////    SimpleIoc.Default.Register<IDataService, DataService>();
             ////}
+            
+            SimpleIoc.Default.Register<IStorageService,StorageService>();
 
             SimpleIoc.Default.Register<MainViewModel>();
         }

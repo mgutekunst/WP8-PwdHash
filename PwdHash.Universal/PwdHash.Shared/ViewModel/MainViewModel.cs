@@ -1,6 +1,8 @@
 ﻿using System.Collections.ObjectModel;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
+using PwdHash.Common;
+using PwdHash.Interfaces;
 using PwdHash.Utils;
 using PwdHash.WinStore.Model;
 
@@ -9,6 +11,8 @@ namespace PwdHash.WinStore.ViewModel
     public class MainViewModel : ViewModelBase
     {
         private const int MaxRecentHashes = 20;
+
+        private IStorageService _storageService;
 
         #region Properties
 
@@ -79,19 +83,30 @@ namespace PwdHash.WinStore.ViewModel
         #endregion
 
 
-        public MainViewModel()
+        public MainViewModel(IStorageService storageService)
         {
+            _storageService = storageService;
+
 
             HashCommand = new RelayCommand(hash);
             AddToFavoritesCommand = new RelayCommand(addToFavorites);
 
-            RecentHashes = new ObservableCollection<Hash>();
-            Favorites = new ObservableCollection<Hash>();
-            
+
+
             if (IsInDesignModeStatic)
             {
                 createDesignTimeData();
             }
+            else
+            {
+                // get recentHashes and Favorites
+                var recent = _storageService.GetFromPasswordVault<ObservableCollection<Hash>>(Statics.MAINVIEWMODEL_KEY_RECENT);
+                var favorites = _storageService.GetFromPasswordVault<ObservableCollection<Hash>>(Statics.MAINVIEWMODEL_KEY_FAVORITES);
+
+                RecentHashes = recent ?? new ObservableCollection<Hash>();
+                Favorites = favorites ?? new ObservableCollection<Hash>();
+            }
+
         }
 
 
@@ -105,7 +120,7 @@ namespace PwdHash.WinStore.ViewModel
             var h = HashPassword.create(Password, url);
             Hash = h;
 
-            addToRecentHashes(new Hash{ Password = Password, Url = Url });
+            addToRecentHashes(new Hash { Password = Password, Url = Url });
         }
 
         private void addToFavorites()
@@ -115,6 +130,8 @@ namespace PwdHash.WinStore.ViewModel
 
             var hash = new Hash { Url = Url, Password = Password };
             Favorites.Add(hash);
+
+            _storageService.SaveToPasswordVault(Statics.MAINVIEWMODEL_KEY_FAVORITES, Favorites);
         }
 
         private void addToRecentHashes(Hash hash)
@@ -125,7 +142,7 @@ namespace PwdHash.WinStore.ViewModel
                 RecentHashes.RemoveAt(0);
             }
 
-            // todo : Save 
+            _storageService.SaveToPasswordVault(Statics.MAINVIEWMODEL_KEY_RECENT, RecentHashes);
         }
 
 
@@ -148,7 +165,7 @@ namespace PwdHash.WinStore.ViewModel
                 new Hash{Url = "http://www.google.de", Password = "geheim"},
                 new Hash{Url = "http://www.google.de", Password = "geheim"},
             };
-            
+
         }
     }
 }
