@@ -20,7 +20,12 @@
                         <core:InvokeCommandAction Command="{Binding MainVielModel.ListItemTappedCommand, Source={StaticResource Locator}}" CommandParameter="{Binding}"/>
                     </core:EventTriggerBehavior>
                 </i:Interaction.Behaviors>
-                <TextBlock Text="{Binding Url}" />
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Image Source="/Assets/Key.png" Width="20" Margin="0,12,12,12"/>
+                <TextBlock Grid.Column="1" Text="{Binding Url}" VerticalAlignment="Center" FontSize="20"/>
             </Grid>
         </DataTemplate>
         <Storyboard x:Name="MovePageDown">
@@ -58,8 +63,16 @@
     </Page.BottomAppBar>
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <Hub Header="{Binding Source={StaticResource ResWrapper}, Path=Strings[ApplicationTitle]}">
-            <HubSection Header="{Binding Source={StaticResource ResWrapper}, Path=Strings[MainPageLabelHash]}" Width="{StaticResource HubWidth}">
+        <Hub x:Name="Hub" Margin="0,24">
+            <Hub.HeaderTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Assets/icon.png" Width="60" Margin="0,0,12,0" VerticalAlignment="Center"/>
+                        <TextBlock Text="{Binding Source={StaticResource ResWrapper}, Path=Strings[ApplicationTitle]}" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </DataTemplate>
+            </Hub.HeaderTemplate>
+            <HubSection x:Name="InputHubSection" Header="{Binding Source={StaticResource ResWrapper}, Path=Strings[MainPageLabelHash]}" Width="{StaticResource HubWidth}">
                 <HubSection.ContentTemplate>
                     <DataTemplate x:Name="TextTemplate">
                         <Grid MinWidth="150">

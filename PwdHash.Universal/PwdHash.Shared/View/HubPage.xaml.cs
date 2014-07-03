@@ -73,6 +73,8 @@ namespace PwdHash.WinStore.View
 
             tBox.Focus(FocusState.Programmatic);
             tBox.SelectAll();
+
+            Hub.ScrollToSection(InputHubSection);
         }
     }
 }
