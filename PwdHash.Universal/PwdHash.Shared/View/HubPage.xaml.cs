@@ -1,23 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Resources;
-using System.Runtime.InteropServices.WindowsRuntime;
-using System.Threading.Tasks;
-using Windows.ApplicationModel.Resources;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
-using Windows.System;
+﻿using Windows.System;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
+using PwdHash.WinStore.Model;
+using PwdHash.WinStore.ViewModel;
 
 namespace PwdHash.WinStore.View
 {
@@ -29,12 +17,13 @@ namespace PwdHash.WinStore.View
         private PasswordBox _passwordBox;
         private bool isMovedUp;
 
+        MainViewModel _vm;
+
         public HubPage()
         {
             this.InitializeComponent();
-            var rl = new ResourceLoader();
 
-            var s = rl.GetString("ApplicationTitle");
+            _vm = (MainViewModel) DataContext;
         }
 
         private async void TextBox_OnKeyDown(object sender, KeyRoutedEventArgs e)
