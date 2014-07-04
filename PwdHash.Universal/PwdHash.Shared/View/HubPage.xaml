@@ -7,6 +7,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:i="using:Microsoft.Xaml.Interactivity"
     xmlns:core="using:Microsoft.Xaml.Interactions.Core"
+    xmlns:utils="using:PwdHash.Utils"
     mc:Ignorable="d"
     DataContext="{Binding Source={StaticResource Locator}, Path=MainVielModel}" RenderTransformOrigin="0.5,0.5">
 
@@ -19,15 +20,31 @@
                     <core:EventTriggerBehavior EventName="Tapped">
                         <core:InvokeCommandAction Command="{Binding MainVielModel.ListItemTappedCommand, Source={StaticResource Locator}}" CommandParameter="{Binding}"/>
                     </core:EventTriggerBehavior>
+                    <core:EventTriggerBehavior EventName="Holding">
+                        <utils:OpenFlyoutAction />
+                    </core:EventTriggerBehavior>
+                    <core:EventTriggerBehavior EventName="RightTapped">
+                        <utils:OpenFlyoutAction />
+                    </core:EventTriggerBehavior>
                 </i:Interaction.Behaviors>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
+                
+                <!-- Flyout -->
+                <FlyoutBase.AttachedFlyout>
+                    <MenuFlyout>
+                        <MenuFlyoutItem Text="{Binding Source={StaticResource ResWrapper}, Path=Strings[MainPageLabelDeleteHash]}" Command="{Binding Source={StaticResource Locator}, Path=MainVielModel.DeleteHashFromListsCommand}" CommandParameter="{Binding}"></MenuFlyoutItem>
+                    </MenuFlyout>
+                </FlyoutBase.AttachedFlyout>
+                
                 <Image Source="/Assets/Key.png" Width="20" Margin="0,12,12,12"/>
                 <TextBlock Grid.Column="1" Text="{Binding Url}" VerticalAlignment="Center" FontSize="20"/>
             </Grid>
         </DataTemplate>
+        
+        
         <Storyboard x:Name="MovePageDown">
         	<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(Control.FontFamily)" Storyboard.TargetName="page">
         		<DiscreteObjectKeyFrame KeyTime="0:0:0.2">
@@ -98,7 +115,7 @@
             </HubSection>
             <HubSection Header="{Binding Source={StaticResource ResWrapper}, Path=Strings[MainPageLabelFavorites]}" Width="{StaticResource HubWidth}">
                 <DataTemplate>
-                    <ListView ItemsSource="{Binding Favorites}" ItemTemplate="{StaticResource HashListViewTemplate}" SelectionMode="None"/>
+                    <ListView ItemsSource="{Binding Favorites}" ItemTemplate="{StaticResource HashListViewTemplate}" SelectionMode="None" />
                 </DataTemplate>
             </HubSection>
         </Hub>

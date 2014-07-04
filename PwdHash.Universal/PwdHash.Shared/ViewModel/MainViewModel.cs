@@ -1,4 +1,5 @@
 ﻿using System.Collections.ObjectModel;
+using System.Diagnostics;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using PwdHash.Common;
@@ -80,6 +81,7 @@ namespace PwdHash.WinStore.ViewModel
 		public RelayCommand HashCommand { get; private set; }
 		public RelayCommand AddToFavoritesCommand { get; private set; }
 		public RelayCommand<Hash> ListItemTappedCommand { get; private set; }
+	    public RelayCommand<Hash> DeleteHashFromListsCommand { get; set; }
 
 #endregion
 
@@ -89,9 +91,10 @@ namespace PwdHash.WinStore.ViewModel
 				_storageService = storageService;
 
 
-				HashCommand = new RelayCommand(hash);
-				AddToFavoritesCommand = new RelayCommand(addToFavorites);
-				ListItemTappedCommand = new RelayCommand<Hash>(listItemTapped);
+				HashCommand                = new RelayCommand(hash);
+				AddToFavoritesCommand      = new RelayCommand(addToFavorites);
+				ListItemTappedCommand      = new RelayCommand<Hash>(listItemTapped);
+                DeleteHashFromListsCommand = new RelayCommand<Hash>(deleteHash);
 
 
 				if (IsInDesignModeStatic)
@@ -110,8 +113,33 @@ namespace PwdHash.WinStore.ViewModel
 
 			}
 
+	    private void deleteHash(Hash obj)
+	    {
+	        // find according list
+            if (Favorites.Contains(obj))
+                deleteFromFavorites(obj);
+            else if (RecentHashes.Contains(obj))
+                deleteFromRecentHashes(obj);
+            else
+                Debug.Assert(false, "Couldn't find Hash in any list");
 
-		private void hash()
+            // delete
+	    }
+
+	    private void deleteFromRecentHashes(Hash hash)
+	    {
+            RecentHashes.Remove(hash);
+            _storageService.SaveToPasswordVault(Statics.MAINVIEWMODEL_KEY_RECENT, RecentHashes);
+	    }
+
+	    private void deleteFromFavorites(Hash hash)
+	    {
+            Favorites.Remove(hash);
+            _storageService.SaveToPasswordVault(Statics.MAINVIEWMODEL_KEY_FAVORITES, Favorites);
+	    }
+
+
+	    private void hash()
 			{
 				if (string.IsNullOrEmpty(Url) || string.IsNullOrEmpty(Password))
 					return;

@@ -126,6 +126,9 @@
   <data name="MainPageButtonLabelHashMe" xml:space="preserve">
     <value>Hash Me</value>
   </data>
+  <data name="MainPageLabelDeleteHash" xml:space="preserve">
+    <value>Entfernen</value>
+  </data>
   <data name="MainPageLabelFavorites" xml:space="preserve">
     <value>Favoriten</value>
   </data>
