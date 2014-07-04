@@ -124,7 +124,7 @@
     <value>zu Favoriten hinzufügen</value>
   </data>
   <data name="MainPageButtonLabelHashMe" xml:space="preserve">
-    <value>Hash Me</value>
+    <value>Hash berechnen</value>
   </data>
   <data name="MainPageLabelDeleteHash" xml:space="preserve">
     <value>Entfernen</value>
@@ -136,7 +136,7 @@
     <value>Hash</value>
   </data>
   <data name="MainPageLabelPassword" xml:space="preserve">
-    <value>Password</value>
+    <value>Passwort</value>
   </data>
   <data name="MainPageLabelRecent" xml:space="preserve">
     <value>Letzte gebildete Hashes</value>
