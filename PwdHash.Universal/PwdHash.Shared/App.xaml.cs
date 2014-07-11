@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Resources;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
+using Windows.ApplicationModel.DataTransfer;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -18,7 +20,9 @@ using Windows.UI.Xaml.Media.Animation;
 using Windows.UI.Xaml.Navigation;
 
 // The Blank Application template is documented at http://go.microsoft.com/fwlink/?LinkId=234227
+using Microsoft.Practices.ServiceLocation;
 using PwdHash.WinStore.View;
+using PwdHash.WinStore.ViewModel;
 
 namespace PwdHash.WinStore
 {
@@ -56,6 +60,11 @@ namespace PwdHash.WinStore
             }
 #endif
 
+            InitApplication(e);
+        }
+
+        private void InitApplication(IActivatedEventArgs e)
+        {
             Frame rootFrame = Window.Current.Content as Frame;
 
             // Do not repeat app initialization when the Window already has content,
@@ -93,14 +102,13 @@ namespace PwdHash.WinStore
                 rootFrame.ContentTransitions = null;
                 rootFrame.Navigated += this.RootFrame_FirstNavigated;
 #endif
-
-                // When the navigation stack isn't restored navigate to the first page,
-                // configuring the new page by passing required information as a navigation
-                // parameter
-                if (!rootFrame.Navigate(typeof(HubPage), e.Arguments))
-                {
-                    throw new Exception("Failed to create initial page");
-                }
+                    // When the navigation stack isn't restored navigate to the first page,
+                    // configuring the new page by passing required information as a navigation
+                    // parameter
+                    if (!rootFrame.Navigate(typeof(HubPage)))
+                    {
+                        throw new Exception("Failed to create initial page");
+                    }
             }
 
             // Ensure the current window is active
@@ -134,6 +142,23 @@ namespace PwdHash.WinStore
 
             // TODO: Save application state and stop any background activity
             deferral.Complete();
+        }
+
+        /// <summary>
+        /// Handle Activation through a ShareTarget
+        /// </summary>
+        protected override async void OnShareTargetActivated(ShareTargetActivatedEventArgs args)
+        {
+            base.OnShareTargetActivated(args);
+            if(args.ShareOperation.Data.Contains(StandardDataFormats.Uri))
+            {
+                var url = await args.ShareOperation.Data.GetUriAsync();
+                Debug.WriteLine("App.xaml.cs | OnShareTargetActivated | Received {0}",url);
+                InitApplication(args);
+
+                ServiceLocator.Current.GetInstance<MainViewModel>().Url = url.ToString();
+                
+            }
         }
     }
 }
