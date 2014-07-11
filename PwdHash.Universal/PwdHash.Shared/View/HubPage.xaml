@@ -12,7 +12,10 @@
     DataContext="{Binding Source={StaticResource Locator}, Path=MainVielModel}" RenderTransformOrigin="0.5,0.5">
 
     <Page.Resources>
-        <x:Double x:Key="HubWidth">300</x:Double>
+        <Style x:Key="DefaultHubSectionStyle" TargetType="HubSection">
+            <Setter Property="Width" Value="320" />
+            <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+        </Style>
 
         <DataTemplate x:Key="HashListViewTemplate">
             <Grid Background="Transparent">
@@ -40,7 +43,7 @@
                 </FlyoutBase.AttachedFlyout>
                 
                 <Image Source="/Assets/Key.png" Width="20" Margin="0,12,12,12"/>
-                <TextBlock Grid.Column="1" Text="{Binding Url}" VerticalAlignment="Center" FontSize="20"/>
+                <TextBlock Grid.Column="1" Text="{Binding Url}" VerticalAlignment="Center" FontSize="20" TextWrapping="Wrap" MaxHeight="80" TextTrimming="CharacterEllipsis"/>
             </Grid>
         </DataTemplate>
         
@@ -49,19 +52,9 @@
         	<DoubleAnimation Duration="0:0:0.2" To="0" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="page" d:IsOptimized="True"/>
         </Storyboard>
         <Storyboard x:Name="MovePageUp">
-        	<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(Control.FontFamily)" Storyboard.TargetName="page">
-        		<DiscreteObjectKeyFrame KeyTime="0:0:0.2">
-        			<DiscreteObjectKeyFrame.Value>
-        				<FontFamily>Global User Interface</FontFamily>
-        			</DiscreteObjectKeyFrame.Value>
-        		</DiscreteObjectKeyFrame>
-        	</ObjectAnimationUsingKeyFrames>
         	<DoubleAnimation Duration="0:0:0.2" To="-50" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="page" d:IsOptimized="True"/>
         </Storyboard>
     </Page.Resources>
-	<Page.Projection>
-		<PlaneProjection/>
-	</Page.Projection>
 	<Page.RenderTransform>
 		<CompositeTransform/>
 	</Page.RenderTransform>
@@ -73,7 +66,7 @@
     </Page.BottomAppBar>
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <Hub x:Name="Hub" Margin="0,24">
+        <Hub x:Name="Hub" Margin="0,24" ScrollViewer.HorizontalScrollBarVisibility="Auto" >
             <Hub.HeaderTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
@@ -82,10 +75,11 @@
                     </StackPanel>
                 </DataTemplate>
             </Hub.HeaderTemplate>
-            <HubSection x:Name="InputHubSection" Header="{Binding Source={StaticResource ResWrapper}, Path=Strings[MainPageLabelHash]}" Width="{StaticResource HubWidth}">
+            
+            <HubSection x:Name="InputHubSection" Header="{Binding Source={StaticResource ResWrapper}, Path=Strings[MainPageLabelHash]}" Style="{StaticResource DefaultHubSectionStyle}">
                 <HubSection.ContentTemplate>
                     <DataTemplate x:Name="TextTemplate">
-                        <Grid MinWidth="150">
+                        <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="Auto"/>
                                 <RowDefinition Height="Auto"/>
@@ -101,12 +95,12 @@
                     </DataTemplate>
                 </HubSection.ContentTemplate>
             </HubSection>
-            <HubSection Header="{Binding Source={StaticResource ResWrapper}, Path=Strings[MainPageLabelRecent]}">
+            <HubSection Header="{Binding Source={StaticResource ResWrapper}, Path=Strings[MainPageLabelRecent]}" Style="{StaticResource DefaultHubSectionStyle}" >
                 <DataTemplate>
                     <ListView ItemsSource="{Binding RecentHashes}" ItemTemplate="{StaticResource HashListViewTemplate}" SelectionMode="None"/>
                 </DataTemplate>
             </HubSection>
-            <HubSection Header="{Binding Source={StaticResource ResWrapper}, Path=Strings[MainPageLabelFavorites]}">
+            <HubSection Header="{Binding Source={StaticResource ResWrapper}, Path=Strings[MainPageLabelFavorites]}" Style="{StaticResource DefaultHubSectionStyle}" >
                 <DataTemplate>
                     <ListView ItemsSource="{Binding Favorites}" ItemTemplate="{StaticResource HashListViewTemplate}" SelectionMode="None" />
                 </DataTemplate>
