@@ -46,13 +46,6 @@
         
         
         <Storyboard x:Name="MovePageDown">
-        	<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(Control.FontFamily)" Storyboard.TargetName="page">
-        		<DiscreteObjectKeyFrame KeyTime="0:0:0.2">
-        			<DiscreteObjectKeyFrame.Value>
-        				<FontFamily>Global User Interface</FontFamily>
-        			</DiscreteObjectKeyFrame.Value>
-        		</DiscreteObjectKeyFrame>
-        	</ObjectAnimationUsingKeyFrames>
         	<DoubleAnimation Duration="0:0:0.2" To="0" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="page" d:IsOptimized="True"/>
         </Storyboard>
         <Storyboard x:Name="MovePageUp">
@@ -113,7 +106,7 @@
                     <ListView ItemsSource="{Binding RecentHashes}" ItemTemplate="{StaticResource HashListViewTemplate}" SelectionMode="None"/>
                 </DataTemplate>
             </HubSection>
-            <HubSection Header="{Binding Source={StaticResource ResWrapper}, Path=Strings[MainPageLabelFavorites]}" Width="{StaticResource HubWidth}">
+            <HubSection Header="{Binding Source={StaticResource ResWrapper}, Path=Strings[MainPageLabelFavorites]}">
                 <DataTemplate>
                     <ListView ItemsSource="{Binding Favorites}" ItemTemplate="{StaticResource HashListViewTemplate}" SelectionMode="None" />
                 </DataTemplate>
