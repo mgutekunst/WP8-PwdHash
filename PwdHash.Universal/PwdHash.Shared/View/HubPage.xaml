@@ -89,7 +89,7 @@
                             </Grid.RowDefinitions>
                             <TextBox Header="{Binding Source={StaticResource ResWrapper}, Path=Strings[MainPageLabelUrl]}" Text="{Binding Url, Mode=TwoWay}" KeyDown="TextBox_OnKeyDown"/>
                             <PasswordBox Header="{Binding Source={StaticResource ResWrapper}, Path=Strings[MainPageLabelPassword]}" Password="{Binding Password, Mode=TwoWay}" Grid.Row="1" Margin="0,12" KeyDown="PasswordBox_OnKeyDown" Loaded="PasswordBox_OnLoaded" LostFocus="PasswordBox_LostFocus"/>
-                            <Button Grid.Row="2" Content="{Binding Source={StaticResource ResWrapper}, Path=Strings[MainPageButtonLabelHashMe]}" Command="{Binding HashCommand}" HorizontalAlignment="Center"/>
+                            <Button Grid.Row="2" Content="{Binding Source={StaticResource ResWrapper}, Path=Strings[MainPageButtonLabelHashMe]}" Command="{Binding HashCommand}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,36,0,0"/>
                             <TextBox Text="{Binding Hash}" Grid.Row="3" Margin="0,12,0,0" FontSize="20" IsReadOnly="True" TextChanged="ResultBox_OnTextChanged"/>
                         </Grid>
                     </DataTemplate>
