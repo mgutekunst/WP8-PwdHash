@@ -4,7 +4,7 @@
   <Properties>
     <DisplayName>PwdHash.WinStore.Windows</DisplayName>
     <PublisherDisplayName>Manuel.Gutekunst</PublisherDisplayName>
-    <Logo>Assets\StoreLogo.png</Logo>
+    <Logo>Assets\Tiles\StoreLogo.png</Logo>
   </Properties>
   <Prerequisites>
     <OSMinVersion>6.3.0</OSMinVersion>
@@ -15,8 +15,8 @@
   </Resources>
   <Applications>
     <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="PwdHash.WinStore.Windows.App">
-      <m2:VisualElements DisplayName="PwdHash.WinStore.Windows" Square150x150Logo="Assets\Logo.png" Square30x30Logo="Assets\SmallLogo.png" Description="PwdHash.WinStore.Windows" ForegroundText="light" BackgroundColor="#464646">
-        <m2:SplashScreen Image="Assets\SplashScreen.png" />
+      <m2:VisualElements DisplayName="PwdHash.WinStore.Windows" Square150x150Logo="Assets\Tiles\Logo.png" Square30x30Logo="Assets\Tiles\SmallLogo.png" Description="PwdHash.WinStore.Windows" ForegroundText="light" BackgroundColor="#464646">
+        <m2:SplashScreen Image="Assets\Tiles\SplashScreen.png" />
         <m2:ApplicationView MinWidth="width320" />
       </m2:VisualElements>
       <Extensions>
