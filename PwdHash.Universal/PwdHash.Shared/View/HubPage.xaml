@@ -13,7 +13,7 @@
 
     <Page.Resources>
         <Style x:Key="DefaultHubSectionStyle" TargetType="HubSection">
-            <Setter Property="Width" Value="320" />
+            <Setter Property="Width" Value="360" />
             <Setter Property="HorizontalContentAlignment" Value="Stretch" />
         </Style>
 
@@ -70,7 +70,7 @@
             <Hub.HeaderTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
-                        <Image Source="/Assets/icon.png" Width="60" Margin="0,0,12,0" VerticalAlignment="Center"/>
+<!--                        <Image Source="/Assets/icon.png" Width="60" Margin="0,0,12,0" VerticalAlignment="Center"/>-->
                         <TextBlock Text="{Binding Source={StaticResource ResWrapper}, Path=Strings[ApplicationTitle]}" VerticalAlignment="Center"/>
                     </StackPanel>
                 </DataTemplate>

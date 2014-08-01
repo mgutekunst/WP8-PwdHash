@@ -39,7 +39,6 @@
     <PRIResource Include="$(MSBuildThisFileDirectory)Resources\de\Resources.resw" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="$(MSBuildThisFileDirectory)Assets\icon.png" />
     <Content Include="$(MSBuildThisFileDirectory)Assets\Key.png" />
   </ItemGroup>
 </Project>
