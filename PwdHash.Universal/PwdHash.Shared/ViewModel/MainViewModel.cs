@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
+using System.Linq;
+using Windows.UI.Popups;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using PwdHash.Common;
@@ -181,7 +183,11 @@ namespace PwdHash.WinStore.ViewModel
 
             if (doHash(Url, Password))
             {
-                addToRecentHashes(new Hash { Password = Password, Url = Url });
+                var extractedUrl = DomainExtractor.Extract(Url);
+                if(RecentHashes.All(r => r.Url != extractedUrl))
+                {
+                    addToRecentHashes(new Hash { Password = Password, Url = extractedUrl });
+                }
             }
         }
 
@@ -208,7 +214,18 @@ namespace PwdHash.WinStore.ViewModel
             if (string.IsNullOrEmpty(Url) || string.IsNullOrEmpty(Password))
                 return;
 
-            var hash = new Hash { Url = Url, Password = Password };
+            var extractedUrl = DomainExtractor.Extract(Url);
+
+            if (Favorites.Any(a => a.Url == extractedUrl))
+            {
+                var res = new Windows.ApplicationModel.Resources.ResourceLoader();
+                var message = new MessageDialog(res.GetString("MainPageMessageAlreadyFavoriteContent"), res.GetString("MainPageMessageAlreadyFavoriteTitle"));
+                message.ShowAsync();
+
+                return;
+            }
+
+            var hash = new Hash { Url = extractedUrl, Password = Password };
             Favorites.Add(hash);
 
             _storageService.SaveToPasswordVault(Statics.MAINVIEWMODEL_KEY_FAVORITES, Favorites);

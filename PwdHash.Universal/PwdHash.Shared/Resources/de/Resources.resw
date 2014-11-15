@@ -150,4 +150,10 @@
   <data name="MainPageLabelUrl" xml:space="preserve">
     <value>Url</value>
   </data>
+  <data name="MainPageMessageAlreadyFavoriteContent" xml:space="preserve">
+    <value>Url bereits in den Favoriten</value>
+  </data>
+  <data name="MainPageMessageAlreadyFavoriteTitle" xml:space="preserve">
+    <value>Hinweis</value>
+  </data>
 </root>
