@@ -23,45 +23,33 @@
                     <core:EventTriggerBehavior EventName="Tapped">
                         <core:InvokeCommandAction Command="{Binding MainVielModel.ListItemTappedCommand, Source={StaticResource Locator}}" CommandParameter="{Binding}"/>
                     </core:EventTriggerBehavior>
-                    <core:EventTriggerBehavior EventName="Holding">
-                        <utils:OpenFlyoutAction />
-                    </core:EventTriggerBehavior>
-                    <core:EventTriggerBehavior EventName="RightTapped">
-                        <utils:OpenFlyoutAction />
-                    </core:EventTriggerBehavior>
                 </i:Interaction.Behaviors>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                
-                <!-- Flyout -->
-                <FlyoutBase.AttachedFlyout>
-                    <MenuFlyout>
-                        <MenuFlyoutItem Text="{Binding Source={StaticResource ResWrapper}, Path=Strings[MainPageLabelDeleteHash]}" Command="{Binding Source={StaticResource Locator}, Path=MainVielModel.DeleteHashFromListsCommand}" CommandParameter="{Binding}"></MenuFlyoutItem>
-                    </MenuFlyout>
-                </FlyoutBase.AttachedFlyout>
-                
+
                 <Image Source="/Assets/Key.png" Width="20" Margin="0,12,12,12"/>
                 <TextBlock Grid.Column="1" Text="{Binding Url}" VerticalAlignment="Center" FontSize="20" TextWrapping="Wrap" MaxHeight="80" TextTrimming="CharacterEllipsis"/>
             </Grid>
         </DataTemplate>
-        
-        
+
         <Storyboard x:Name="MovePageDown">
-        	<DoubleAnimation Duration="0:0:0.2" To="0" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="page" d:IsOptimized="True"/>
+            <DoubleAnimation Duration="0:0:0.2" To="0" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="page" d:IsOptimized="True"/>
         </Storyboard>
         <Storyboard x:Name="MovePageUp">
-        	<DoubleAnimation Duration="0:0:0.2" To="-50" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="page" d:IsOptimized="True"/>
+            <DoubleAnimation Duration="0:0:0.2" To="-50" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" Storyboard.TargetName="page" d:IsOptimized="True"/>
         </Storyboard>
     </Page.Resources>
-	<Page.RenderTransform>
-		<CompositeTransform/>
-	</Page.RenderTransform>
+    <Page.RenderTransform>
+        <CompositeTransform/>
+    </Page.RenderTransform>
 
     <Page.BottomAppBar>
         <CommandBar IsOpen="True" IsSticky="True">
-                <AppBarButton Icon="Favorite" Label="{Binding Source={StaticResource ResWrapper}, Path=Strings[MainPageAppBarLabelFavorite]}" Command="{Binding AddToFavoritesCommand}"/>
+            <AppBarButton x:Name="EditingAppBarButton" Label="{Binding Source={StaticResource ResWrapper}, Path=Strings[MainPageAppBarLabelSelect]}" Icon="Bullets" Click="EditingAppBarButton_OnClicked" Loaded="EditingAppBarButton_OnLoaded"/>
+            <AppBarButton x:Name="DeleteAppBarButton" Icon="Remove" Visibility="Collapsed" Label="{Binding Source={StaticResource ResWrapper}, Path=Strings[MainPageAppBarLabelDelete]}" Command="{Binding DeleteItemsCommand}"/>
+            <AppBarButton x:Name="FavoriteAppBarButton" Icon="Favorite" Label="{Binding Source={StaticResource ResWrapper}, Path=Strings[MainPageAppBarLabelFavorite]}" Command="{Binding AddToFavoritesCommand}"/>
         </CommandBar>
     </Page.BottomAppBar>
 
@@ -70,12 +58,12 @@
             <Hub.HeaderTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
-<!--                        <Image Source="/Assets/icon.png" Width="60" Margin="0,0,12,0" VerticalAlignment="Center"/>-->
+                        <!--                        <Image Source="/Assets/icon.png" Width="60" Margin="0,0,12,0" VerticalAlignment="Center"/>-->
                         <TextBlock Text="{Binding Source={StaticResource ResWrapper}, Path=Strings[ApplicationTitle]}" VerticalAlignment="Center"/>
                     </StackPanel>
                 </DataTemplate>
             </Hub.HeaderTemplate>
-            
+
             <HubSection x:Name="InputHubSection" Header="{Binding Source={StaticResource ResWrapper}, Path=Strings[MainPageLabelHash]}" Style="{StaticResource DefaultHubSectionStyle}">
                 <HubSection.ContentTemplate>
                     <DataTemplate x:Name="TextTemplate">
@@ -97,12 +85,12 @@
             </HubSection>
             <HubSection Header="{Binding Source={StaticResource ResWrapper}, Path=Strings[MainPageLabelRecent]}" Style="{StaticResource DefaultHubSectionStyle}" >
                 <DataTemplate>
-                    <ListView ItemsSource="{Binding RecentHashes}" ItemTemplate="{StaticResource HashListViewTemplate}" SelectionMode="None"/>
+                    <ListView x:Name="RecentHashesListView" Loaded="RecentHashesListView_OnLoaded"  ItemsSource="{Binding RecentHashes}" ItemTemplate="{StaticResource HashListViewTemplate}" SelectionMode="Multiple" SelectionChanged="ListView_SelectionChanged"  IsItemClickEnabled="True"/>
                 </DataTemplate>
             </HubSection>
             <HubSection Header="{Binding Source={StaticResource ResWrapper}, Path=Strings[MainPageLabelFavorites]}" Style="{StaticResource DefaultHubSectionStyle}" >
                 <DataTemplate>
-                    <ListView ItemsSource="{Binding Favorites}" ItemTemplate="{StaticResource HashListViewTemplate}" SelectionMode="None" />
+                    <ListView x:Name="FavoritesListView" Loaded="FavoritesListView_OnLoaded" ItemsSource="{Binding Favorites}" ItemTemplate="{StaticResource HashListViewTemplate}" SelectionMode="Multiple" SelectionChanged="ListView_SelectionChanged" IsItemClickEnabled="True" />
                 </DataTemplate>
             </HubSection>
         </Hub>

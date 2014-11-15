@@ -26,7 +26,7 @@
       </m3:VisualElements>
       <Extensions>
         <Extension Category="windows.shareTarget">
-          <ShareTarget m2:Description="Receive Urls">
+          <ShareTarget m2:Description="Receive Url to create hashes">
             <DataFormat>URI</DataFormat>
           </ShareTarget>
         </Extension>
