@@ -1,0 +1,17 @@
+Diese App ist eine Windows Phone Umsetzung der von Ross et. al. vorgestellten
+Web Password Hashing [1]. Bei diesem Verfahren wird mit der Url und einem zu
+vergebenden Passwort ein seitenspezifischen Passwort erstellt. 
+
+Über ein Share Target ist es möglich Urls aus anderen Anwendungen an PwdHash zu
+senden. Darüber werden die letzten 20 Hashes gespeichert und es besteht die
+Möglichkeit Favoriten anzulegen.
+
+Der Quellcode ist unter [2] zu finden. Dort können auch Fehler, Wünsche und
+Anregungen hinterlassen werden.
+
+* Footnotes
+
+[1] Ross et al. - Unknown - Stronger Password Authentication Using Browser Extensions
+  http://crypto.stanford.edu/PwdHash/
+
+[2] https://github.com/mgutekunst/WP8-PwdHash
