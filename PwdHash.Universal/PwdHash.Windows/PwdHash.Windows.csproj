@@ -120,8 +120,7 @@
       <SubType>Designer</SubType>
     </AppxManifest>
     <None Include="packages.config" />
-    <None Include="PwdHash.Windows_StoreKey.pfx" />
-    <None Include="PwdHash.Windows_TemporaryKey.pfx" />
+    <None Include="PwdHash.WinStore.Windows_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\Logo.scale-100.png" />
