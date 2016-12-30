@@ -19,6 +19,8 @@
     <PackageCertificateKeyFile>PwdHash.Universal.Tests_TemporaryKey.pfx</PackageCertificateKeyFile>
     <AppxBundle>Never</AppxBundle>
     <AllowCrossPlatformRetargeting>False</AllowCrossPlatformRetargeting>
+    <AppxAutoIncrementPackageRevision>True</AppxAutoIncrementPackageRevision>
+    <PackageCertificateThumbprint>38917F73781B1F1872B0B30765E47271BC8D5812</PackageCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
