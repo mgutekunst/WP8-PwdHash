@@ -22,7 +22,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Services\StorageService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Utils\DomainExtractor.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Utils\HashPassword.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Utils\OpenFlyoutAction.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModel\MainViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModel\ViewModelLocator.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)View\HubPage.xaml.cs">
