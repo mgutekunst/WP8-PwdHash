@@ -1,13 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.30408.0
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PwdHash.Universal", "PwdHash.Universal", "{930FE52D-1F98-4130-B3EF-6748C49C3F41}"
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "PwdHash.Shared", "PwdHash.Universal\PwdHash.Shared\PwdHash.Shared.shproj", "{EAFE5E33-951B-4117-A96A-8D0BD3B7ABB9}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PwdHash.Windows", "PwdHash.Universal\PwdHash.Windows\PwdHash.Windows.csproj", "{5ADE617F-DAB1-4393-951B-155AF5EBD9A2}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PwdHash.WindowsPhone", "PwdHash.Universal\PwdHash.WindowsPhone\PwdHash.WindowsPhone.csproj", "{F179D08D-6D2F-4E84-9FB1-6320EC4EC715}"
 EndProject
@@ -15,7 +13,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PwdHash.Universal.Tests", "
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
-		PwdHash.Universal\PwdHash.Shared\PwdHash.Shared.projitems*{5ade617f-dab1-4393-951b-155af5ebd9a2}*SharedItemsImports = 4
+		PwdHash.Universal\PwdHash.Shared\PwdHash.Shared.projitems*{4afd6074-47b9-4a97-bbb2-780e126cda50}*SharedItemsImports = 4
 		PwdHash.Universal\PwdHash.Shared\PwdHash.Shared.projitems*{eafe5e33-951b-4117-a96a-8d0bd3b7abb9}*SharedItemsImports = 13
 		PwdHash.Universal\PwdHash.Shared\PwdHash.Shared.projitems*{f179d08d-6d2f-4e84-9fb1-6320ec4ec715}*SharedItemsImports = 4
 	EndGlobalSection
@@ -30,30 +28,6 @@ Global
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{5ADE617F-DAB1-4393-951B-155AF5EBD9A2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5ADE617F-DAB1-4393-951B-155AF5EBD9A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5ADE617F-DAB1-4393-951B-155AF5EBD9A2}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
-		{5ADE617F-DAB1-4393-951B-155AF5EBD9A2}.Debug|ARM.ActiveCfg = Debug|ARM
-		{5ADE617F-DAB1-4393-951B-155AF5EBD9A2}.Debug|ARM.Build.0 = Debug|ARM
-		{5ADE617F-DAB1-4393-951B-155AF5EBD9A2}.Debug|ARM.Deploy.0 = Debug|ARM
-		{5ADE617F-DAB1-4393-951B-155AF5EBD9A2}.Debug|x64.ActiveCfg = Debug|x64
-		{5ADE617F-DAB1-4393-951B-155AF5EBD9A2}.Debug|x64.Build.0 = Debug|x64
-		{5ADE617F-DAB1-4393-951B-155AF5EBD9A2}.Debug|x64.Deploy.0 = Debug|x64
-		{5ADE617F-DAB1-4393-951B-155AF5EBD9A2}.Debug|x86.ActiveCfg = Debug|x86
-		{5ADE617F-DAB1-4393-951B-155AF5EBD9A2}.Debug|x86.Build.0 = Debug|x86
-		{5ADE617F-DAB1-4393-951B-155AF5EBD9A2}.Debug|x86.Deploy.0 = Debug|x86
-		{5ADE617F-DAB1-4393-951B-155AF5EBD9A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5ADE617F-DAB1-4393-951B-155AF5EBD9A2}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5ADE617F-DAB1-4393-951B-155AF5EBD9A2}.Release|Any CPU.Deploy.0 = Release|Any CPU
-		{5ADE617F-DAB1-4393-951B-155AF5EBD9A2}.Release|ARM.ActiveCfg = Release|ARM
-		{5ADE617F-DAB1-4393-951B-155AF5EBD9A2}.Release|ARM.Build.0 = Release|ARM
-		{5ADE617F-DAB1-4393-951B-155AF5EBD9A2}.Release|ARM.Deploy.0 = Release|ARM
-		{5ADE617F-DAB1-4393-951B-155AF5EBD9A2}.Release|x64.ActiveCfg = Release|x64
-		{5ADE617F-DAB1-4393-951B-155AF5EBD9A2}.Release|x64.Build.0 = Release|x64
-		{5ADE617F-DAB1-4393-951B-155AF5EBD9A2}.Release|x64.Deploy.0 = Release|x64
-		{5ADE617F-DAB1-4393-951B-155AF5EBD9A2}.Release|x86.ActiveCfg = Release|x86
-		{5ADE617F-DAB1-4393-951B-155AF5EBD9A2}.Release|x86.Build.0 = Release|x86
-		{5ADE617F-DAB1-4393-951B-155AF5EBD9A2}.Release|x86.Deploy.0 = Release|x86
 		{F179D08D-6D2F-4E84-9FB1-6320EC4EC715}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{F179D08D-6D2F-4E84-9FB1-6320EC4EC715}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F179D08D-6D2F-4E84-9FB1-6320EC4EC715}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
@@ -104,7 +78,6 @@ Global
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{EAFE5E33-951B-4117-A96A-8D0BD3B7ABB9} = {930FE52D-1F98-4130-B3EF-6748C49C3F41}
-		{5ADE617F-DAB1-4393-951B-155AF5EBD9A2} = {930FE52D-1F98-4130-B3EF-6748C49C3F41}
 		{F179D08D-6D2F-4E84-9FB1-6320EC4EC715} = {930FE52D-1F98-4130-B3EF-6748C49C3F41}
 	EndGlobalSection
 EndGlobal

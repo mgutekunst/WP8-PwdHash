@@ -91,8 +91,6 @@ namespace PwdHash.WinStore.ViewModel
 
         #endregion
 
-
-
         #region Commands
 
         public RelayCommand HashCommand { get; private set; }
@@ -138,6 +136,7 @@ namespace PwdHash.WinStore.ViewModel
                     Favorites.Remove(item);
                 }
                 SelectedFavoriteHashes.Clear();
+                _storageService.SaveToPasswordVault(Statics.MAINVIEWMODEL_KEY_FAVORITES, Favorites);
             }
 
             if (SelectedRecentHashes != null)
@@ -147,6 +146,7 @@ namespace PwdHash.WinStore.ViewModel
                     RecentHashes.Remove(item);
                 }
                 SelectedRecentHashes.Clear();
+                _storageService.SaveToPasswordVault(Statics.MAINVIEWMODEL_KEY_RECENT, RecentHashes);
             }
         }
 
@@ -257,18 +257,18 @@ namespace PwdHash.WinStore.ViewModel
             Hash = "aXnrdue8";
 
             RecentHashes = new ObservableCollection<Hash>
-					{
-						new Hash{Url = "http://www.google.de", Password = "geheim"},
-						new Hash{Url = "http://www.google.de", Password = "geheim"},
-						new Hash{Url = "http://www.google.de", Password = "geheim"},
-					};
+                    {
+                        new Hash{Url = "http://www.google.de", Password = "geheim"},
+                        new Hash{Url = "http://www.google.de", Password = "geheim"},
+                        new Hash{Url = "http://www.google.de", Password = "geheim"},
+                    };
 
             Favorites = new ObservableCollection<Hash>
-					{
-						new Hash{Url = "http://www.google.de", Password = "geheim"},
-						new Hash{Url = "http://www.google.de", Password = "geheim"},
-						new Hash{Url = "http://www.google.de", Password = "geheim"},
-					};
+                    {
+                        new Hash{Url = "http://www.google.de", Password = "geheim"},
+                        new Hash{Url = "http://www.google.de", Password = "geheim"},
+                        new Hash{Url = "http://www.google.de", Password = "geheim"},
+                    };
 
         }
     }
