@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/2010/manifest" xmlns:m2="http://schemas.microsoft.com/appx/2013/manifest" xmlns:m3="http://schemas.microsoft.com/appx/2014/manifest" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest">
-  <Identity Name="39412Sarevok.PwdHash" Publisher="CN=521A083F-0422-4FB0-A7A6-A2D48A8CCB78" Version="1.0.0.0" />
+  <Identity Name="39412Sarevok.PwdHash" Publisher="CN=521A083F-0422-4FB0-A7A6-A2D48A8CCB78" Version="1.0.1.1" />
   <mp:PhoneIdentity PhoneProductId="b6938a30-07fe-4557-91a9-84ef57947d1b" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
     <DisplayName>PwdHash</DisplayName>
