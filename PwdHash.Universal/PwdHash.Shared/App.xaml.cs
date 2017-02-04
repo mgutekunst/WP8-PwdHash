@@ -5,13 +5,13 @@ using Windows.ApplicationModel.Activation;
 using Windows.ApplicationModel.DataTransfer;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Microsoft.Practices.ServiceLocation;
-
-// The Blank Application template is documented at http://go.microsoft.com/fwlink/?LinkId=234227
-using PwdHash.WinStore.View;
-using PwdHash.WinStore.ViewModel;
 using Windows.UI.Xaml.Media.Animation;
 using Windows.UI.Xaml.Navigation;
+
+// The Blank Application template is documented at http://go.microsoft.com/fwlink/?LinkId=234227
+using Microsoft.Practices.ServiceLocation;
+using PwdHash.WinStore.View;
+using PwdHash.WinStore.ViewModel;
 
 namespace PwdHash.WinStore
 {
