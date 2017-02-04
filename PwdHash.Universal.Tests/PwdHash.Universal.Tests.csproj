@@ -110,6 +110,11 @@
     <AppxPackageIncludePrivateSymbols>true</AppxPackageIncludePrivateSymbols>
   </PropertyGroup>
   <ItemGroup>
+    <!--A reference to the entire .Net Framework and Windows SDK are automatically included-->
+    <SDKReference Include="MSTestFramework, Version=11.0" />
+    <SDKReference Include="TestPlatform, Version=11.0" />
+  </ItemGroup>
+  <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utils\DomainExtractorTests.cs" />
     <Compile Include="Utils\HashPasswordTests.cs" />
@@ -118,7 +123,6 @@
     <AppxManifest Include="Package.appxmanifest">
       <SubType>Designer</SubType>
     </AppxManifest>
-    <None Include="packages.config" />
     <None Include="PwdHash.Universal.Tests_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
@@ -136,35 +140,11 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <SDKReference Include="BehaviorsXamlSDKManaged, Version=12.0">
-      <Name>Behaviors SDK %28XAML%29</Name>
-    </SDKReference>
-    <SDKReference Include="MSTestFramework, Version=14.0">
-      <Name>MSTest for Managed Projects</Name>
-    </SDKReference>
-    <SDKReference Include="TestPlatform, Version=14.0">
-      <Name>Microsoft Visual Studio Test Core</Name>
-    </SDKReference>
+    <ProjectReference Include="..\PwdHash.Universal\PwdHash.Windows\PwdHash.Windows.csproj">
+      <Project>{5ade617f-dab1-4393-951b-155af5ebd9a2}</Project>
+      <Name>PwdHash.Windows</Name>
+    </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Reference Include="GalaSoft.MvvmLight.Extras.Win8, Version=4.3.31.28708, Culture=neutral, PublicKeyToken=33a77f5c33c10a68, processorArchitecture=MSIL">
-      <HintPath>..\packages\MvvmLightLibs.4.3.31.1\lib\netcore45\GalaSoft.MvvmLight.Extras.Win8.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="GalaSoft.MvvmLight.Win8, Version=4.3.31.28708, Culture=neutral, PublicKeyToken=7f0ea4153a3589fc, processorArchitecture=MSIL">
-      <HintPath>..\packages\MvvmLightLibs.4.3.31.1\lib\netcore45\GalaSoft.MvvmLight.Win8.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=619affe60327fc48, processorArchitecture=MSIL">
-      <HintPath>..\packages\MvvmLightLibs.4.3.31.1\lib\netcore45\Microsoft.Practices.ServiceLocation.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.6.0.3\lib\netcore45\Newtonsoft.Json.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-  </ItemGroup>
-  <Import Project="..\PwdHash.Universal\PwdHash.Shared\PwdHash.Shared.projitems" Label="Shared" />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '12.0' ">
     <VisualStudioVersion>12.0</VisualStudioVersion>
   </PropertyGroup>
